@@ -49,7 +49,7 @@ public class Slingshot : MonoBehaviour {
     void OnMouseDown()
     {                                                    // d
         // The player has pressed the mouse button while over Slingshot
-        aimingMode = true;
+        aimingMode = true; //when clicking it goes into aiming mode which allows us to continue reading the code (remember if it was false it just has a return making us leave the update)
         // Instantiate a Projectile
         projectile = Instantiate(prefabProjectile) as GameObject;
         // Start it at the launchPoint
@@ -58,7 +58,7 @@ public class Slingshot : MonoBehaviour {
         projectile.GetComponent<Rigidbody>().isKinematic = true;
         // Set it to isKinematic for now
         projectileRigidbody = projectile.GetComponent<Rigidbody>();               // a
-        projectileRigidbody.isKinematic = true;                                   // a
+        projectileRigidbody.isKinematic = true;                                   // a prevents physics form acting on the projectile
     }
 
     void Update()
@@ -89,7 +89,7 @@ public class Slingshot : MonoBehaviour {
         {                                        // e
             // The mouse has been released
             aimingMode = false;
-            projectileRigidbody.isKinematic = false;
+            projectileRigidbody.isKinematic = false; //makes physics affect the projectile again
             projectileRigidbody.velocity = -mouseDelta * velocityMult;
             FollowCam.POI = projectile;
             projectile = null;
